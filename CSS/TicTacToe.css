@@ -1,0 +1,22 @@
+.size{
+	width: 100px;
+	height: 100px;
+}
+.bdrMiddleLR{
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+.bdrMiddleTB{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+td{
+	width: 100px;
+	height: 100px;
+}
+h1{
+	text-align: center;
+}
+.midAlign{
+	margin: auto;
+}

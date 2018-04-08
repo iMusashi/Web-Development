@@ -1,0 +1,28 @@
+
+.mixedColorBlock{
+    margin: 1.66%;
+    width: 30%;
+    padding-bottom: 30%;
+    background-color: saddlebrown;
+    float: left;
+}
+
+#container{
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+body{
+    background-color:#232323 !important;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#headerRGB{
+    background-color: darkcyan;
+    color: white;
+}
+
+h1{
+    font-size: 54px !important;
+}
