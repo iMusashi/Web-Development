@@ -18,10 +18,22 @@ body{
 }
 
 #headerRGB{
-    background-color: darkcyan;
+    background-color: #008b8b;
     color: white;
 }
 
 h1{
     font-size: 54px !important;
+}
+
+#stripe{
+    background-color: white;
+    height: 30px;
+    text-align: center;
+    color: black;
+}
+
+.selectedMode{
+    background-color: darkcyan;
+    color: white;
 }

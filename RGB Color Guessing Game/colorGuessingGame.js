@@ -1,30 +1,100 @@
-colors=[
-    "rgb(255, 0, 0)",
-    "rgb(255, 255, 0)",
-    "rgb(255, 0, 255)",
-    "rgb(0, 255, 255)",
-    "rgb(0, 255, 0)",
-    "rgb(0, 0, 255)"
-]   
-
+var body = document.querySelector("body");
 var lstColorBlocks = document.querySelectorAll(".mixedColorBlock");
-var bodyObj = document.querySelector("body");
-var pickedColor = colors[3];
 var rgbHeaderDisplayObj = document.querySelector("#rgbHeaderValue");
-rgbHeaderDisplayObj.textContent = String(pickedColor).toUpperCase();
+var rgbHeaderObj = document.querySelector("#headerRGB");
+var MessageObj = document.querySelector("#message");
+var easyMode = document.querySelector("#easyActivity");
+var desiredBlocks = 0;
+easyMode.addEventListener("click",function(){
+    desiredBlocks = 3;
+    initializeBlocks();
+    easyMode.classList.add("selectedMode");
+    hardMode.classList.remove("selectedMode");
+});
+var hardMode = document.querySelector("#hardActivity");
+hardMode.addEventListener("click",function(){
+    desiredBlocks = 6;
+    initializeBlocks();
+    hardMode.classList.add("selectedMode");
+    easyMode.classList.remove("selectedMode");
+});
 
-for(var i = 0; i < lstColorBlocks.length; i++)
-{
-    lstColorBlocks[i].style.backgroundColor = colors[i];
-    lstColorBlocks[i].addEventListener("click", function(){
-        if(this.style.backgroundColor != pickedColor)
-        { 
-            this.style.backgroundColor = bodyObj.style.backgroundColor;
-        }
-        else
+var newActivityButton = document.querySelector("#newActivity");
+newActivityButton.addEventListener("click", function(){
+    newActivityButton.textContent = "New Colors";
+    rgbHeaderObj.style.backgroundColor = "#008b8b";
+    initializeBlocks();
+});
+
+function initializeBlocks(){
+    colors = generateRandomColors(desiredBlocks);
+    pickedColor = randomColor(colors);
+    rgbHeaderDisplayObj.textContent = String(pickedColor).toUpperCase();
+    for(var i = 0; i < desiredBlocks; i++)
+    {
+        lstColorBlocks[i].style.backgroundColor = colors[i];
+    }
+    if(i < lstColorBlocks.length)
+    {
+        while(i<lstColorBlocks.length)
         {
-            
+            lstColorBlocks[i].style.backgroundColor = body.style.backgroundColor;
+            i++;
         }
-    });
+    }
+};
+
+    var colors = generateRandomColors(6);
+    var pickedColor = randomColor(colors);
+    rgbHeaderDisplayObj.textContent = String(pickedColor).toUpperCase();
+
+    for(var i = 0; i < lstColorBlocks.length; i++)
+    {
+        lstColorBlocks[i].style.backgroundColor = colors[i];
+        lstColorBlocks[i].addEventListener("click", function(){
+            var clickedColor = this.style.backgroundColor;
+            if(clickedColor != pickedColor)
+            { 
+                this.style.backgroundColor = body.style.backgroundColor;
+                MessageObj.textContent ="Try Again?";
+            }
+            else
+            {
+                MessageObj.textContent ="Correct!";
+                newActivityButton.textContent = "Play Again?"
+                rgbHeaderObj.style.backgroundColor = clickedColor;
+                changeContentColors(clickedColor);
+            }
+        });
+    }
+
+
+//Create newActivity button function.
+
+
+function randomColor(colors){
+    var index = Math.floor(Math.random()* colors.length);
+    return colors[index];
 }
 
+function changeContentColors(color){
+    for(var i = 0; i < desiredBlocks; i++)
+    {
+        lstColorBlocks[i].style.backgroundColor = color;
+    }
+}
+
+function generateRandomColors(num)
+{
+    var colors = [];
+    for( var i = 0; i < num; i++)
+    {
+        colors[i] = "rgb(" + generateRandomRGB() + ", " + generateRandomRGB() + ", " + generateRandomRGB() + ")";
+    }
+    return colors;
+}
+
+function generateRandomRGB()
+{
+    return Math.floor(Math.random() * 256);
+}
