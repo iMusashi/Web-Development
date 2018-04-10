@@ -4,7 +4,7 @@ var rgbHeaderDisplayObj = document.querySelector("#rgbHeaderValue");
 var rgbHeaderObj = document.querySelector("#headerRGB");
 var MessageObj = document.querySelector("#message");
 var easyMode = document.querySelector("#easyActivity");
-var desiredBlocks = 0;
+var desiredBlocks = 6;
 easyMode.addEventListener("click",function(){
     desiredBlocks = 3;
     initializeBlocks();
@@ -21,12 +21,13 @@ hardMode.addEventListener("click",function(){
 
 var newActivityButton = document.querySelector("#newActivity");
 newActivityButton.addEventListener("click", function(){
-    newActivityButton.textContent = "New Colors";
-    rgbHeaderObj.style.backgroundColor = "#008b8b";
+    this.textContent = "New Colors";
+    MessageObj.textContent ="";
     initializeBlocks();
 });
 
 function initializeBlocks(){
+    rgbHeaderObj.style.backgroundColor = "steelblue";
     colors = generateRandomColors(desiredBlocks);
     pickedColor = randomColor(colors);
     rgbHeaderDisplayObj.textContent = String(pickedColor).toUpperCase();
@@ -44,29 +45,28 @@ function initializeBlocks(){
     }
 };
 
-    var colors = generateRandomColors(6);
-    var pickedColor = randomColor(colors);
-    rgbHeaderDisplayObj.textContent = String(pickedColor).toUpperCase();
-
-    for(var i = 0; i < lstColorBlocks.length; i++)
-    {
-        lstColorBlocks[i].style.backgroundColor = colors[i];
-        lstColorBlocks[i].addEventListener("click", function(){
-            var clickedColor = this.style.backgroundColor;
-            if(clickedColor != pickedColor)
-            { 
-                this.style.backgroundColor = body.style.backgroundColor;
-                MessageObj.textContent ="Try Again?";
-            }
-            else
-            {
-                MessageObj.textContent ="Correct!";
-                newActivityButton.textContent = "Play Again?"
-                rgbHeaderObj.style.backgroundColor = clickedColor;
-                changeContentColors(clickedColor);
-            }
-        });
-    }
+var colors = generateRandomColors(6);
+var pickedColor = randomColor(colors);
+rgbHeaderDisplayObj.textContent = String(pickedColor).toUpperCase();
+for(var i = 0; i < lstColorBlocks.length; i++)
+{
+    lstColorBlocks[i].style.backgroundColor = colors[i];
+    lstColorBlocks[i].addEventListener("click", function(){
+        var clickedColor = this.style.backgroundColor;
+        if(clickedColor != pickedColor)
+        { 
+            this.style.backgroundColor = body.style.backgroundColor;
+            MessageObj.textContent ="Try Again?";
+        }
+        else
+        {
+            MessageObj.textContent ="Correct!";
+            newActivityButton.textContent = "Play Again?"
+            rgbHeaderObj.style.backgroundColor = clickedColor;
+            changeContentColors(clickedColor);
+        }
+    });
+}
 
 
 //Create newActivity button function.
