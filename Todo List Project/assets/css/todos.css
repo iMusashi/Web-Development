@@ -1,0 +1,30 @@
+
+
+#headerTemplate{
+    text-align: left;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    width:25%;
+}
+
+.mainHeader{
+    background-color: dodgerblue;  
+    padding-left: 10%;
+    margin-bottom: 5px;
+}
+
+
+#newTodoItem{
+    height: 25px;
+    width:100%;
+}
+
+.dispnone{
+    display:none;
+}
+
+#idHeaderSpan{
+    display: inline-block;
+    width: 50px;
+}
