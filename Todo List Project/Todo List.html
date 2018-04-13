@@ -4,12 +4,17 @@
     <title>Todo List</title>
     <link rel="stylesheet" href="assets/css/fa-svg-with-js.css">
     <link rel="stylesheet" href="assets/css/todos.css">
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
-    <div id="headerTemplate">
-        <h1 class="mainHeader">TO-DO LIST<span id="idHeaderSpan"></span><i id="idOpenInput"class="fas fa-plus"></i></h1>
-        <input id="newTodoItem" type="text" placeholder="Enter a to-do" class="TodoBox">
+    <div id="container">
+        <h1>To-Do List<i id="idOpenInput"class="fas fa-plus"></i></h1>
+        <input type="text" placeholder="Add New Todo" class="TodoBox">
+        <ul id="itemsList">
+            <li ><span class="fas fa-trash-alt"></span> Wakeup at 5</li>
+            <li ><span class="fas fa-trash-alt"></span> Wakeup at 5</li>
+            <li ><span class="fas fa-trash-alt"></span> Wakeup at 5</li>
+        </ul>
     </div>
 
     <script src="assets/js/lib/jquery-3.3.1.min.js"></script>
