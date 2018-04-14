@@ -4,9 +4,11 @@ $(document).ready(function(){
     var mainList = $("#itemsList");
     var ulItem = $("ul");
     var liItem =$("li");
+
     addItem.on("click",function(){
-        $(this).closest("div").find("input").toggleClass("dispnone");
+        $(this).closest("div").find("input").fadeToggle(50);
     });
+
     newItem.on("keypress",function(event){
         if(event.which != 13)
             return;
@@ -14,7 +16,7 @@ $(document).ready(function(){
         if(todoText == "")
             return;
         $(this).val("");
-        var todoElement = $("<li><span class='fas fa-trash-alt'></span> " + todoText + "</li>");
+        var todoElement = $("<li><span><i class='fas fa-trash-alt'></i></span> " + todoText + "</li>");
         mainList.append(todoElement);                
     });
     
@@ -22,13 +24,8 @@ $(document).ready(function(){
         $(this).toggleClass("completedItem");
     });
 
-    var deleteIcon = $(".fa-trash-alt");
     ulItem.on("click",".fa-trash-alt",function(event){
         $(this).closest("li").fadeOut(function(){$(this).remove();});
         event.stopPropagation();
     }); 
-
-    liItem.on("mouseenter",function(){
-        $(this).find("span").toggleClass("fas fa-trash-alt");
-    });
 });
